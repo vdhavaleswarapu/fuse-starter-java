@@ -12,3 +12,4 @@ public class IexLastTradedPrice {
   private Integer size;
   private long time;
 }
+
