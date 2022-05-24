@@ -8,6 +8,7 @@ import net.sf.aspect4log.Log;
 import net.sf.aspect4log.Log.Level;
 import org.galatea.starter.domain.IexLastTradedPrice;
 import org.galatea.starter.domain.IexSymbol;
+import org.galatea.starter.domain.IexHistoricalPrice;
 import org.galatea.starter.service.IexService;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -48,11 +49,9 @@ public class IexRestController {
     return iexService.getLastTradedPriceForSymbols(symbols);
   }
 
-//  @GetMapping(value = "${mvc.iex.getHistoricalPricesPath}", produces = {MediaType.APPLICATION_JSON_VALUE})
-//  public List<IexHistoricalPrice> getHistoricalPrices(
-//      @RequestParam(value = "symbols") final List<String> symbols, @RequestParam(value = "date") final List<String> date){
-//    return iexService.getHistoricalPrice(symbols);
-//  }
-//  )
-
+  @GetMapping(value = "${mvc.iex.getHistoricalPricesPath}", produces = {MediaType.APPLICATION_JSON_VALUE})
+  public List<IexHistoricalPrice> getHistoricalPrice(
+      @RequestParam(value = "symbols") final String symbols, @RequestParam(value = "date") final String date){
+    return iexService.getHistoricalPrice(symbols, date);
+  }
 }

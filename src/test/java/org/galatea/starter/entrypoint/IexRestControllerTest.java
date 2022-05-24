@@ -85,7 +85,9 @@ public class IexRestControllerTest extends ASpringTest {
     MvcResult result = this.mvc.perform(
         org.springframework.test.web.servlet.request.MockMvcRequestBuilders
             .get("/iex/historicalPrice?symbols=")
-    )
-
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$", is(Collections.emptyList())))
+        .andReturn();
   }
 }

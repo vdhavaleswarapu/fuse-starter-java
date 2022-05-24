@@ -35,7 +35,7 @@ public interface IexClient {
 
 
 //  Check URL and stuff from IEX
-  @GetMapping("/stock")
-  List<IexHistoricalPrice> getHistoricalPrices(@RequestParam("symbols") String[] symbols);
+  @GetMapping("/stock/{symbols}/chart/date/{date}")
+  List<IexHistoricalPrice> getHistoricalPrice(@RequestParam("symbols") String symbols, @RequestParam("date") String date);
 
 }

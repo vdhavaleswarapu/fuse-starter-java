@@ -46,13 +46,11 @@ public class IexService {
     }
   }
 
-//  public List<IexHistoricalPrice> getHistoricalPrice(final List<String> symbols){
-//    if(CollectionUtils.isEmpty(symbols)) {
-//      return Collections.emptyList();
-//    } else {
-//      return iexClient.getHistoricalPrice(symbols.toArray(new String[0]));
-//    }
-//  }
-
-
+  public List<IexHistoricalPrice> getHistoricalPrice(final String symbols, final String date){
+    if(symbols.isEmpty() || date.isEmpty()) {
+      return Collections.emptyList();
+    } else {
+      return iexClient.getHistoricalPrice(symbols,date);
+    }
+  }
 }
